@@ -1,0 +1,271 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Civil Engineering Color Palette */
+    --background: 210 20% 96%;
+    --foreground: 215 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 15%;
+
+    /* Steel Blue Primary - Industrial Strength */
+    --primary: 210 50% 35%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 210 50% 45%;
+
+    /* Concrete Gray Secondary - Construction Materials */
+    --secondary: 210 10% 85%;
+    --secondary-foreground: 215 25% 15%;
+    --secondary-dark: 210 15% 25%;
+
+    --muted: 210 10% 90%;
+    --muted-foreground: 210 10% 45%;
+
+    /* Construction Orange Accent - Safety & Warning */
+    --accent: 25 95% 55%;
+    --accent-foreground: 215 25% 15%;
+    --accent-glow: 25 95% 65%;
+    --accent-soft: 25 50% 90%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 210 15% 88%;
+    --input: 210 15% 88%;
+    --ring: 25 95% 55%;
+
+    --radius: 0.5rem;
+
+    /* Civil Engineering Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-glow)));
+    --gradient-steel: linear-gradient(135deg, hsl(var(--secondary-dark)), hsl(var(--primary)));
+    --gradient-blueprint: radial-gradient(circle at 50% 50%, hsl(var(--primary) / 0.1), transparent);
+
+    /* Construction Shadows */
+    --shadow-steel: 0 4px 20px hsl(var(--primary) / 0.2);
+    --shadow-warm: 0 0 30px hsl(var(--accent) / 0.3);
+    --shadow-structure: 0 8px 32px hsl(var(--primary) / 0.15);
+
+    /* Animations */
+    --transition-build: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-construct: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark Mode Civil Engineering */
+    --background: 215 25% 8%;
+    --foreground: 0 0% 95%;
+
+    --card: 215 25% 12%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 215 25% 12%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 210 50% 55%;
+    --primary-foreground: 215 25% 8%;
+    --primary-glow: 210 50% 65%;
+
+    --secondary: 215 15% 15%;
+    --secondary-foreground: 0 0% 95%;
+    --secondary-dark: 215 20% 10%;
+
+    --muted: 215 15% 18%;
+    --muted-foreground: 210 10% 65%;
+
+    --accent: 25 95% 60%;
+    --accent-foreground: 215 25% 8%;
+    --accent-glow: 25 95% 70%;
+    --accent-soft: 25 50% 15%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 215 20% 20%;
+    --input: 215 20% 20%;
+    --ring: 25 95% 60%;
+
+    --shadow-steel: 0 4px 20px hsl(var(--primary) / 0.3);
+    --shadow-warm: 0 0 30px hsl(var(--accent) / 0.4);
+    --shadow-structure: 0 8px 32px hsl(var(--primary) / 0.25);
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+}
+
+@layer components {
+  /* Blueprint Grid Pattern */
+  .blueprint-pattern {
+    background-image: 
+      linear-gradient(hsl(var(--primary) / 0.15) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--primary) / 0.15) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Construction Effects */
+  .glow-warm {
+    box-shadow: var(--shadow-warm);
+  }
+
+  .glow-steel {
+    box-shadow: var(--shadow-steel);
+  }
+
+  /* Safety Stripe Animation */
+  .safety-stripe {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .safety-stripe::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      45deg,
+      transparent,
+      hsl(var(--accent) / 0.3),
+      transparent
+    );
+    animation: construction-flow 3s infinite;
+  }
+
+  @keyframes construction-flow {
+    0% { left: -100%; }
+    50% { left: 100%; }
+    100% { left: 100%; }
+  }
+
+  /* Building Construction Animation */
+  .build-up {
+    animation: build-structure 2s ease-out;
+  }
+
+  @keyframes build-structure {
+    0% { 
+      transform: translateY(20px) scale(0.9);
+      opacity: 0;
+    }
+    100% { 
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+  }
+
+  /* Crane/Gear Rotation */
+  .crane-rotate {
+    animation: crane-movement 25s linear infinite;
+  }
+
+  @keyframes crane-movement {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* Structural Hover Effects */
+  .hover-build {
+    transition: var(--transition-build);
+  }
+
+  .hover-build:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: var(--shadow-structure);
+  }
+
+  /* Engineering Gradients */
+  .bg-gradient-steel {
+    background: var(--gradient-steel);
+  }
+
+  .bg-gradient-blueprint {
+    background: var(--gradient-blueprint);
+  }
+
+  /* Construction Typography */
+  .text-construction {
+    text-shadow: 2px 2px 4px hsl(var(--primary) / 0.3);
+  }
+
+  /* Progress Bar - Construction Style */
+  .progress-build {
+    animation: construction-progress 2.5s ease-out forwards;
+  }
+
+  @keyframes construction-progress {
+    from { width: 0%; }
+    to { width: var(--progress-width); }
+  }
+
+  /* Blueprint Lines */
+  .blueprint-lines {
+    position: relative;
+  }
+
+  .blueprint-lines::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(0deg, hsl(var(--primary) / 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--primary) / 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+  }
+
+  /* Structural Support Lines */
+  .support-beam {
+    position: relative;
+  }
+
+  .support-beam::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, hsl(var(--accent)), transparent);
+    border-radius: 2px;
+  }
+}
